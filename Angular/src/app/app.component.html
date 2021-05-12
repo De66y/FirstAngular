@@ -1,0 +1,28 @@
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>E-mail address</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let contact of contacts">
+    <td>{{contact.firstName}} {{contact.surname}}</td>
+    <td>{{contact.email}}</td>
+    <td>
+      <button class="btn">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<form (ngSubmit)="addContact()">
+  <label for="inputFirstName">First name:</label>
+  <input type="text" [(ngModel)]="newContact.firstName" name="firstName"
+         id="inputFirstName" class="form-control">
+  <label for="inputSurname">Surname:</label>
+  <input type="text" [(ngModel)]="newContact.surname" name="surname"
+         id="inputSurname" class="form-control">
+  <label for="inputEmail">E-mail address:</label>
+  <input type="text" [(ngModel)]="newContact.email" name="email" id="inputEmail"
+         class="form-control">
+  <button class="btn btn-primary">Add</button>
+</form>
