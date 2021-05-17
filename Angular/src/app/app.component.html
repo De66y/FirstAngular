@@ -5,7 +5,7 @@
     <th></th>
   </tr>
   <tr *ngFor="let contact of contacts">
-    <td>{{contact.firstName}} {{contact.surname}}</td>
+    <td>{{contact | contactName}}</td>
     <td>{{contact.email}}</td>
     <td>
       <button class="btn">Edit</button>
@@ -23,6 +23,6 @@
          id="inputSurname" class="form-control">
   <label for="inputEmail">E-mail address:</label>
   <input type="text" [(ngModel)]="newContact.email" name="email" id="inputEmail"
-         class="form-control">
+         class="form-control" required="ngModel">
   <button class="btn btn-primary">Add</button>
 </form>

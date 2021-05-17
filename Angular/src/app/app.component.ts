@@ -18,5 +18,6 @@ export class AppComponent {
 
   addContact(): void{
     this.contacts.push(this.newContact);
+    this.newContact = {} as Contact; //Object weer 'leegmaken' anders blijven alle nieuwe objecten gelinked en worden ze dus allemaal veranderd naar de laatste invoer
   }
 }
