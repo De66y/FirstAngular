@@ -1,8 +1,12 @@
 .ng-valid{
-  border-color: green;
   color: green;
 }
 
-.ng-invalid{
+
+.ng-invalid {
   color: brown;
+}
+
+inputFirstName {
+  color: aqua;
 }

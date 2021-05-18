@@ -14,15 +14,44 @@
   </tr>
 </table>
 
-<form (ngSubmit)="addContact()">
+<form (ngSubmit)="addContact()" #addContactForm="ngForm">
   <label for="inputFirstName">First name:</label>
-  <input type="text" [(ngModel)]="newContact.firstName" name="firstName"
-         id="inputFirstName" class="form-control">
+  <input type="text"
+         [(ngModel)]="newContact.firstName"
+         name="firstName"
+         id="inputFirstName"
+         class="form-control"
+         minlength ="5"
+         #firstName="ngModel">
+  <span *ngIf="firstName.touched && firstName.invalid">Minimaal 5 karakters</span><br>
+
   <label for="inputSurname">Surname:</label>
-  <input type="text" [(ngModel)]="newContact.surname" name="surname"
-         id="inputSurname" class="form-control">
+  <input type="text"
+         [(ngModel)]="newContact.surname"
+         name="surname"
+         id="inputSurname"
+         class="form-control"
+         pattern="[a-zA-Z-\s]*"
+         #surname="ngModel">
+  <span *ngIf="surname.touched && surname.errors?.pattern">Alleen letters of spaties</span><br>
+
   <label for="inputEmail">E-mail address:</label>
-  <input type="text" [(ngModel)]="newContact.email" name="email" id="inputEmail"
-         class="form-control" required="ngModel">
-  <button class="btn btn-primary">Add</button>
+  <input type="text"
+         pattern=".+@.+\.nl"
+         minlength="10"
+         [(ngModel)]="newContact.email"
+         name="email"
+         id="inputEmail"
+         class="form-control"
+         required
+         #email="ngModel">
+
+  <div *ngIf="email.errors?.required">Please enter your e-mail address</div> <!--Doen hetzelfde: <span *ngIf="email.invalid" >Verplicht veld</span>-->
+  <div *ngIf="email.errors?.minlength">Minimaal 10 lang</div>
+  <div *ngIf="email.errors?.pattern">Pattern klopt niet</div>
+
+  <br><hr>
+  <button class="btn btn-primary"
+          [disabled]="!addContactForm.valid">Add</button>
 </form>
+<pre>{{contacts|json}}</pre>
