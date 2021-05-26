@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { Contact } from './models/contact';
+import {Component, OnInit} from '@angular/core';
+import {Contact} from './models/contact';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ContactService} from './service/contact.service';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +9,27 @@ import { Contact } from './models/contact';
   styleUrls: ['app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title: 'titel';
-  contacts: Contact[] = [
-    { firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com' },
-    { firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com' },
-    { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
-  ];
-  newContact = {} as Contact;
+  contacts: Contact[] = this.contactService.contacts;
 
-  addContact(): void{
-    this.contacts.push(this.newContact);
-    this.newContact = {} as Contact; //Object weer 'leegmaken' anders blijven alle nieuwe objecten gelinked en worden ze dus allemaal veranderd naar de laatste invoer
+
+  addContactForm = new FormGroup({
+    firstname: new FormControl('', Validators.pattern('[a-zA-Z-\s]*')),
+    surname: new FormControl('', Validators.pattern('[a-zA-Z-\s]*')),
+    email: new FormControl('', Validators.pattern('^.+@.+\.nl$'))
+  });
+
+  constructor(private contactService: ContactService) {
+  }
+
+  addContact(): void {
+    this.contactService.addContact(this.addContactForm.value);
+  }
+
+  ngOnInit(): void {
+    this.contactService.contactsUpdated$.subscribe((contacts) => this.contacts = contacts
+    );
+    this.contactService.getContacts();
   }
 }
