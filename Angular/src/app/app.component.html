@@ -1,12 +1,14 @@
 <table class="table">
   <tr>
-    <th>Name</th>
-    <th>E-mail address</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Genre</th>
     <th></th>
   </tr>
-  <tr *ngFor="let contact of contacts">
-    <td>{{contact | contactName}}</td>
-    <td>{{contact.email}}</td>
+  <tr *ngFor="let book of books">
+    <td>{{book | bookIdTitlePipe}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.genre}}</td>
     <td>
       <button class="btn">Edit</button>
       <button class="btn btn-danger">Delete</button>
@@ -14,12 +16,13 @@
   </tr>
 </table>
 
-<form (ngSubmit)="addContact()" [formGroup]="addContactForm">
-  <input type="text" formControlName="firstname">
-  <input type="text" formControlName="surname">
-  <input type="text" formControlName="email">
+<form (ngSubmit)="addBook()" [formGroup]="addBookForm">
+  <input type="number" formControlName="id">
+  <input type="text" formControlName="title">
+  <input type="text" formControlName="author">
+  <input type="text" formControlName="genre">
 
   <br><hr>
   <button>Add</button>
 </form>
-<pre>{{contacts|json}}</pre>
+<pre>{{books|json}}</pre>

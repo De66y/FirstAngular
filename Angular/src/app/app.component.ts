@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Contact} from './models/contact';
+import {Book} from './models/book';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ContactService} from './service/contact.service';
+import {BookService} from './service/book.service';
 
 @Component({
   selector: 'app-root',
@@ -10,26 +10,28 @@ import {ContactService} from './service/contact.service';
 })
 
 export class AppComponent implements OnInit {
-  title: 'titel';
-  contacts: Contact[] = this.contactService.contacts;
+  title: 'titelll';
+  books: Book[] = this.bookService.books;
 
 
-  addContactForm = new FormGroup({
-    firstname: new FormControl('', Validators.pattern('[a-zA-Z-\s]*')),
-    surname: new FormControl('', Validators.pattern('[a-zA-Z-\s]*')),
-    email: new FormControl('', Validators.pattern('^.+@.+\.nl$'))
+  addBookForm = new FormGroup({
+    id: new FormControl('', Validators.pattern('[0-9]*')),
+    title: new FormControl(''),
+    author: new FormControl(''),
+    genre: new FormControl('')
+    //email: new FormControl('', Validators.pattern('^.+@.+\.nl$'))
   });
 
-  constructor(private contactService: ContactService) {
+  constructor(private bookService: BookService) {
   }
 
-  addContact(): void {
-    this.contactService.addContact(this.addContactForm.value);
+  addBook(): void {
+    this.bookService.addBook(this.addBookForm.value);
   }
 
   ngOnInit(): void {
-    this.contactService.contactsUpdated$.subscribe((contacts) => this.contacts = contacts
+    this.bookService.booksUpdated$.subscribe((books) => this.books = books
     );
-    this.contactService.getContacts();
+    this.bookService.getBooks();
   }
 }
