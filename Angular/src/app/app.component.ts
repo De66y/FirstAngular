@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   title: 'titelll';
   books: Book[] = this.bookService.books;
 
+  constructor(private bookService: BookService) {
+  }
 
   addBookForm = new FormGroup({
     id: new FormControl('', Validators.pattern('[0-9]*')),
@@ -22,16 +24,11 @@ export class AppComponent implements OnInit {
     //email: new FormControl('', Validators.pattern('^.+@.+\.nl$'))
   });
 
-  constructor(private bookService: BookService) {
-  }
-
   addBook(): void {
     this.bookService.addBook(this.addBookForm.value);
   }
 
   ngOnInit(): void {
-    this.bookService.booksUpdated$.subscribe((books) => this.books = books
-    );
-    this.bookService.getBooks();
+
   }
 }

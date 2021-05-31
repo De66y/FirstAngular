@@ -1,8 +1,18 @@
+
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="activeMenu">Home</a></li>
+    <li> <a routerLink="/books" routerLinkActive="activeMenu">Books</a></li>
+    <li> <a routerLink="/json" routerLinkActive="activeMenu">Json</a></li>
+    <li> <a routerLink="/login" routerLinkActive="activeMenu">Login</a></li>
+  </ul>
+
+
 <table class="table">
   <tr>
-    <th>Title</th>
+    <th>Id and Title</th>
     <th>Author</th>
     <th>Genre</th>
+    <th>Buttons</th>
     <th></th>
   </tr>
   <tr *ngFor="let book of books">
@@ -16,13 +26,20 @@
   </tr>
 </table>
 
-<form (ngSubmit)="addBook()" [formGroup]="addBookForm">
-  <input type="number" formControlName="id">
-  <input type="text" formControlName="title">
-  <input type="text" formControlName="author">
-  <input type="text" formControlName="genre">
+<div class="boekInvoer">
+  <form (ngSubmit)="addBook()" [formGroup]="addBookForm">
+    <label>Id</label>
+    <input type="number" formControlName="id">
+    <label>Title</label>
+    <input type="text" formControlName="title">
+    <label>Author</label>
+    <input type="text" formControlName="author">
+    <label>Genre</label>
+    <input type="text" formControlName="genre">
 
-  <br><hr>
-  <button>Add</button>
+   <br><hr>
+    <button>Add</button>
 </form>
-<pre>{{books|json}}</pre>
+</div>
+
+<router-outlet></router-outlet>

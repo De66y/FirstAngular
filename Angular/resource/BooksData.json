@@ -29,6 +29,30 @@
       "title": "Lord of the Rings",
       "author": "JR.R. Tolkien",
       "genre": "Fantasy"
+    },
+    {
+      "id": 6,
+      "title": "Shadowhunters",
+      "author": "C. Clare",
+      "genre": "Fatasy"
+    },
+    {
+      "id": 7,
+      "title": "hoi",
+      "author": "fjsldf",
+      "genre": "sfjksd"
+    },
+    {
+      "id": 9,
+      "title": "Vincent",
+      "author": "Vincent",
+      "genre": "Vincent"
+    },
+    {
+      "id": 10,
+      "title": "Bruno",
+      "author": "Beer",
+      "genre": "dotje"
     }
   ]
 }
