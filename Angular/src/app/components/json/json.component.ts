@@ -8,7 +8,7 @@ import {Book} from '../../models/book';
   styleUrls: ['./json.component.css']
 })
 export class JsonComponent implements OnInit {
-  books: Book[] = this.bookService.books;
+  books: Book[] = this.bookService.getAllBooks;
 
   constructor(private bookService: BookService) { }
 

@@ -14,7 +14,7 @@ const routes: Route[] = [
   { path: 'home', component: HomepageComponent},
   { path: 'books', component: BooksComponent},
   { path: 'json', component: JsonComponent},
-  { path: 'json', component: LoginComponent}
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

@@ -11,7 +11,7 @@ import {BookService} from './service/book.service';
 
 export class AppComponent implements OnInit {
   title: 'titelll';
-  books: Book[] = this.bookService.books;
+  books: Book[] = this.bookService.getAllBooks;
 
   constructor(private bookService: BookService) {
   }

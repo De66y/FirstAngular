@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
 export class BookService {
   uri = serverUrl + '/books';
   // tslint:disable-next-line:variable-name
-  private _books: Book[] = [];
+  private _getAllBooks: Book[] = [];
 
   // tslint:disable-next-line:variable-name
   private _booksDataUpdated$ = new Subject<Book[]>();
@@ -20,12 +20,12 @@ export class BookService {
 
   getBooks(): void {
     this.http.get<Book[]>(this.uri)
-      .subscribe(contacts => this._booksDataUpdated$.next(contacts));
+      .subscribe(books => this._booksDataUpdated$.next(books));
   }
 
 
-  get books(): Book[] {
-    return this._books;
+  get getAllBooks(): Book[] {
+    return this._getAllBooks;
   }
 
   addBook(b: Book) {

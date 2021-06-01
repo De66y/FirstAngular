@@ -1,1 +1,16 @@
 <p>books works!</p>
+
+<table class="table">
+  <tr>
+    <th>Id and Title</th>
+    <th>Author</th>
+    <th>Genre</th>
+    <th>Buttons</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let book of books">
+    <td>{{book | bookIdTitlePipe}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.genre}}</td>
+  </tr>
+</table>
