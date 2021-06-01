@@ -16,8 +16,11 @@ export class AppComponent implements OnInit {
   constructor(private bookService: BookService) {
   }
 
+  ngOnInit(): void {
+
+  }
   addBookForm = new FormGroup({
-    id: new FormControl('', Validators.pattern('[0-9]*')),
+    //id: new FormControl('', Validators.pattern('[0-9]*')),
     title: new FormControl(''),
     author: new FormControl(''),
     genre: new FormControl('')
@@ -28,7 +31,5 @@ export class AppComponent implements OnInit {
     this.bookService.addBook(this.addBookForm.value);
   }
 
-  ngOnInit(): void {
 
-  }
 }

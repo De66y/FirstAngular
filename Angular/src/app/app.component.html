@@ -1,10 +1,9 @@
-
-  <ul>
-    <li><a routerLink="/home" routerLinkActive="activeMenu">Home</a></li>
-    <li> <a routerLink="/books" routerLinkActive="activeMenu">Books</a></li>
-    <li> <a routerLink="/json" routerLinkActive="activeMenu">Json</a></li>
-    <li> <a routerLink="/login" routerLinkActive="activeMenu">Login</a></li>
-  </ul>
+<ul>
+  <li><a routerLink="/home" routerLinkActive="activeMenu">Home</a></li>
+  <li> <a routerLink="/books" routerLinkActive="activeMenu">Books</a></li>
+  <li> <a routerLink="/json" routerLinkActive="activeMenu">Json</a></li>
+  <li> <a routerLink="/login" routerLinkActive="activeMenu">Login</a></li>
+</ul>
 
 
 <table class="table">
@@ -28,8 +27,8 @@
 
 <div class="boekInvoer">
   <form (ngSubmit)="addBook()" [formGroup]="addBookForm">
-    <label>Id</label>
-    <input type="number" formControlName="id">
+    <!--<label>Id</label>
+    <input type="number" formControlName="id">-->
     <label>Title</label>
     <input type="text" formControlName="title">
     <label>Author</label>

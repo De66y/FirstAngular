@@ -9,16 +9,10 @@ import {Subject} from 'rxjs';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-  books: Book[] = this.bookService.getAllBooks;
 
-  constructor(private bookService: BookService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.bookService.booksUpdated$ //Subscriben op de geupdated books
-      .subscribe(b => {
-        this.books = b;
-      });
-    this.bookService.getBooks();  //Meteen de boeken ophalen
   }
 
 }
